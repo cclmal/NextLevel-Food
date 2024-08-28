@@ -1,23 +1,12 @@
 'use client'
-import { useState } from 'react';
-// import { useFormState } from 'react-dom';
+import { useFormState } from 'react-dom';
 import classes from './page.module.css';
 import { shareMeal } from '@/lib/actions';
 import FormSubmit from '@/components/meals/form-submit';
 import ImagePicker from '@/components/meals/image-picker';
 
 export default function ShareMealPage() {
-  // const {state, formAction} = useFormState(shareMeal, { message: null });
-  const [state, setState] = useState({ message: null})
-
-
-  const handleSubmit = async(data) => {
-    const response = await shareMeal(data);
-    console.log('response', response)
-    if(response && !response.success){
-      setState({ message: response.message });
-    }
-  }
+  const [ state, formAction ] = useFormState(shareMeal, {});
 
   return (
     <>
@@ -28,7 +17,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form} action={handleSubmit}>
+        <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>

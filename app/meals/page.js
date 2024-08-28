@@ -11,9 +11,13 @@ export const metadata = {
 };
 
 
+
 async function Meals(){
-  const meals = await getAllMeals(); 
-  return <MealsGrid meals={meals} />
+  let meals = []
+  // ! Descomentar la siguiente linea para ver el diseño
+  // meals = await getAllMeals(); 
+  // console.log('meals', meals)
+  return <MealsGrid meals={meals} styles={classes} />
 }
 
 export default function MealsPage() {
